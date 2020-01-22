@@ -1,2 +1,2 @@
-# eadit
-eadit es un simple editor wysiwyg
+# EaDit
+EaDit is a simple text editor wysiwyg, this project is a proof of concept to better understand how to handle text edition in a web embiroment in a practical way, and with offline mode turning it into a PWA.
