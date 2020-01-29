@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -37,7 +37,7 @@ body, html {
 .topnav {
   overflow: hidden;
   background-color: #FFF;
-  border-bottom: 2px dotted #0DE9C4;
+  border-bottom: 2px dotted #000;
 }
 
 .topnav a {
@@ -68,14 +68,16 @@ body, html {
         <center>
 	<div class="card" id="card">
         <div class="topnav" id="myTopnav">
-                <a><img src="./assets/icons/save.svg" style="width:50px;"></a>
-  		<a href="javascript:void(0);" onclick="negrita()"><b>N</b></a>
-  		<a href="javascript:void(0);" onclick="italica()"><i>I</i></a>
-  		<a href="javascript:void(0);" onclick="subrayado()"><u>S</u></a>
-                <a href="javascript:void(0);" onclick="imagen()">Imagen</a>
-                <a href="javascript:void(0);" onclick="centrar()">Centrar</a>
-                <a href="javascript:void(0);" onclick="justificar()">Justuficar</a>
+		
+                <a ><img src="./assets/icons/save.svg" style="width:30px;" title="Guardar"></a>
+  		<a  href="javascript:void(0);" onclick="negrita()"><img src="./assets/icons/bold.svg" style="width:30px;" title="Negrita"></a>
+  		<a href="javascript:void(0);" onclick="italica()"><img src="./assets/icons/italic.svg" style="width:30px;" title="Itálica"></a>
+  		<a href="javascript:void(0);" onclick="subrayado()"><img src="./assets/icons/underline.svg" style="width:30px;" title="Subrayado"></a>
+                <a href="javascript:void(0);" onclick="imagen()"><img src="./assets/icons/image.svg" style="width:30px;" title="Imagen"></a>
+                <a href="javascript:void(0);" onclick="centrar()"><img src="./assets/icons/center.svg" style="width:30px;" title="Centrar"></a>
+                <a href="javascript:void(0);" onclick="justificar()"><img src="./assets/icons/justify.svg" style="width:30px;" title="Justificar"></a>
                 <input id="file-input" type="file" name="name" style="display: none;" accept="image/*"  />
+		
 	</div>
 		<div class="textarea" id="textarea" autofocus contenteditable="true"></div>
 	</div>
