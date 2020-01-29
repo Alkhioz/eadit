@@ -34,10 +34,14 @@ body, html {
   max-height: 100vh;
   text-align: justify;
 }
+.textarea img{
+  resize: both;
+}
 .topnav {
-  overflow: hidden;
+  
   background-color: #FFF;
   border-bottom: 2px dotted #000;
+  overflow: auto;
 }
 
 .topnav a {
@@ -49,6 +53,7 @@ body, html {
   text-decoration: none;
   font-size: 15px;
   border-bottom: 1px;
+  display: inline-block;
 }
 
 .topnav a:hover {
@@ -59,6 +64,12 @@ body, html {
 .topnav a.active {
   background-color: #4CAF50;
   color: white;
+}
+
+@media (max-width: 800px) {
+  .card {
+	  width: 100%;
+	}
 }
 
 </style>
@@ -76,6 +87,7 @@ body, html {
                 <a href="javascript:void(0);" onclick="imagen()"><img src="./assets/icons/image.svg" style="width:30px;" title="Imagen"></a>
                 <a href="javascript:void(0);" onclick="centrar()"><img src="./assets/icons/center.svg" style="width:30px;" title="Centrar"></a>
                 <a href="javascript:void(0);" onclick="justificar()"><img src="./assets/icons/justify.svg" style="width:30px;" title="Justificar"></a>
+
                 <input id="file-input" type="file" name="name" style="display: none;" accept="image/*"  />
 		
 	</div>
