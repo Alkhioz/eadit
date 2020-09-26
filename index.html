@@ -3,76 +3,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./assets/css/style.css">
 <title>EaDit</title>
-<style>
 
-body, html {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-}
-.container {
-  width: calc(100vw - 20px);
-  background-color: #A7A7A7;
-  top:0;
-  left:0;
-  padding: 10px;
-}
-
-.card {
-  width: 70%;
-  top:0;
-  left:0;
-  background-color: #FFF;
-}
-.textarea {
-  margin-top: 20px;
-  overflow-y:scroll;
-  padding: 0 20px 20px 20px;
-  width: calc(100% - 40px);
-  outline: none;
-  max-height: 100vh;
-  text-align: justify;
-}
-.textarea img{
-  resize: both;
-}
-.topnav {
-  
-  background-color: #FFF;
-  border-bottom: 2px dotted #000;
-  overflow: auto;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: #0DE9C4;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 15px;
-  border-bottom: 1px;
-  display: inline-block;
-}
-
-.topnav a:hover {
-  background-color: #EDF7F5;
-  color: #0DE9C4;
-}
-
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-@media (max-width: 800px) {
-  .card {
-	  width: 100%;
-	}
-}
-
-</style>
 </head>
 <body>
 <div class="container" id="container">
@@ -95,56 +28,6 @@ body, html {
 	</div>
         </center>
 </div>
-<script>
-//let sizea4w = String(document.body.clientHeight * 0.7069555302166476)+'px';
-//document.getElementById("card").style.width = sizea4w;
-
-
-let size = String(document.body.clientHeight - 20)+'px';
-let bar_size = String(document.body.clientHeight - 20 - document.getElementById("myTopnav").clientHeight - 50)+'px';
-document.getElementById("container").style.height = size;
-document.getElementById("card").style.height = size;
-document.getElementById("textarea").style.height = bar_size;
-function negrita() {
-  document.execCommand('bold');
-  document.getElementById("textarea").focus();
-}
-function italica() {
-  document.execCommand('italic');
-  document.getElementById("textarea").focus();
-}
-function subrayado() {
-  document.execCommand('underline');
-  document.getElementById("textarea").focus();
-}
-function imagen() {
-  document.getElementById('file-input').click();
-}
-document.getElementById('file-input').onchange = e => { 
-
-   // getting a hold of the file reference
-   var file = e.target.files[0]; 
-
-   // setting up the reader
-   var reader = new FileReader();
-   reader.readAsDataURL(file,'UTF-8');
-
-   // here we tell the reader what to do when it's done reading...
-   reader.onload = readerEvent => {
-      var content = readerEvent.target.result; // this is the content!
-      document.execCommand('insertImage', false, content);
-      document.getElementById("textarea").focus();
-   }
-
-}
-function centrar() {
-  document.execCommand('justifyCenter');
-  document.getElementById("textarea").focus();
-}
-function justificar() {
-  document.execCommand('justifyFull');
-  document.getElementById("textarea").focus();
-}
-</script>
+<script src="./assets/js/main.js"></script>
 </body>
 </html>
