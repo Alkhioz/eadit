@@ -9,12 +9,9 @@
 <body>
 
         <template id="imageTemplate">
-                <div style="display:grid;width:100%;">
-                        <!--<div style="margin:auto;resize: horizontal;overflow: auto;" id="resizableContainer">-->
-                        <div style="margin:auto;position: relative;padding: 0;" id="resizableContainer" class="resizableContainer">
-                                <div style="background-color: #1e91d9; width: 25px;height: 25px;position: absolute;right: 0;bottom: 0;display: none;"></div>
-                                <img style="width:100%;object-fit: contain;" src="" alt="" class="resposiveImage">
-                                
+                <div  class="imageContainer">
+                                <div id="resizableContainer" class="resizableContainer">
+                                       <img src="" alt="" class="resposiveImage">
                         </div>
                 </div>
         </template>
@@ -29,35 +26,7 @@
         </form>
         <br>
 
-
-<!-- <div class="container" id="container">
-        <center>
-	<div class="card" id="card">
-        <div class="topnav" id="myTopnav">
-		
-                <a ><img src="./assets/icons/save.svg" style="width:30px;" title="Guardar"></a>
-  		<a  href="javascript:void(0);" onclick="negrita()"><img src="./assets/icons/bold.svg" style="width:30px;" title="Negrita"></a>
-  		<a href="javascript:void(0);" onclick="italica()"><img src="./assets/icons/italic.svg" style="width:30px;" title="Itálica"></a>
-  		<a href="javascript:void(0);" onclick="subrayado()"><img src="./assets/icons/underline.svg" style="width:30px;" title="Subrayado"></a>
-                <a href="javascript:void(0);" onclick="imagen()"><img src="./assets/icons/image.svg" style="width:30px;" title="Imagen"></a>
-                <a href="javascript:void(0);" onclick="centrar()"><img src="./assets/icons/center.svg" style="width:30px;" title="Centrar"></a>
-                <a href="javascript:void(0);" onclick="justificar()"><img src="./assets/icons/justify.svg" style="width:30px;" title="Justificar"></a>
-
-                <input id="file-input" type="file" name="name" style="display: none;" accept="image/*"  />
-		
-	</div>
-		<div class="textarea" id="textarea" autofocus contenteditable="true"></div>
-</div><br>
-               
-                <br>
-        </center>
-
-        
-        
-        <katsu-editor img="default.jpeg" data-text="Your card validation code (CVC) is an extra security feature — it is the last 3 or 4 numbers on the back of your card."></katsu-editor>
-</div> -->
-<!-- <script src="./assets/js/main.js"></script> -->
 <script src="./assets/js/addImage.js"></script>
-<!--<script src="./assets/components/components.js"></script>-->
+
 </body>
 </html>

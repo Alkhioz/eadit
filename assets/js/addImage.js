@@ -1,28 +1,23 @@
 var image_form = document.querySelector("#addImage");
 var activeNode;
 
+//https://codepen.io/ZeroX-DG/pen/vjdoYe
+
 let imageIsFocus  = (target) =>  {
     let resizableContainer = target.parentElement;
     let resizableContainerCurrentWidth = resizableContainer.offsetWidth+'px';
-    resizableContainer.style.resize = "horizontal";
-    resizableContainer.style.overflow = "auto";
-    resizableContainer.style.maxWidth = "100%";
+    resizableContainer.classList.add("resizableContainerResize");
+    resizableContainer.classList.remove("resizableContainerFix");
     resizableContainer.style.width = resizableContainerCurrentWidth;
-    resizableContainer.style.border = "5px solid #1e91d9";
-    let resizableContainerControl =  resizableContainer.querySelector("div");
-    resizableContainerControl.style.display = "block";
+    resizableContainer.style.maxWidth = "100%";
     activeNode = resizableContainer;    
 }
 
 let imageLostFocus = () => {
     let activeNodeCurrentWidth = activeNode.offsetWidth+'px';
-    activeNode.style.resize = "none";
-    activeNode.style.overflow = "visible";
-    activeNode.style.width = "100%";
+    activeNode.classList.add("resizableContainerFix");
+    activeNode.classList.remove("resizableContainerResize");
     activeNode.style.maxWidth = activeNodeCurrentWidth;
-    activeNode.style.border = "none";
-    let activeNodeControl =  activeNode.querySelector("div");
-    activeNodeControl.style.display = "none";
     activeNode = false;  
 }
 
@@ -30,9 +25,11 @@ window.onclick = function(e) {
     let event = e || window.event;
     let target = event.target || event.srcElement;
     if(target.classList.contains("resposiveImage")){
+        console.log("meek");
         imageIsFocus(target);
     }else{
         if(activeNode){
+            console.log("mook");
             imageLostFocus();
         }
         
