@@ -2,13 +2,35 @@
 <html lang="es">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./assets/css/style.css">
 <title>EaDit</title>
 
 </head>
 <body>
-<div class="container" id="container">
+
+        <template id="imageTemplate">
+                <div style="display:grid;width:100%;">
+                        <!--<div style="margin:auto;resize: horizontal;overflow: auto;" id="resizableContainer">-->
+                        <div style="margin:auto;position: relative;padding: 0;" id="resizableContainer" class="resizableContainer">
+                                <div style="background-color: #1e91d9; width: 25px;height: 25px;position: absolute;right: 0;bottom: 0;display: none;"></div>
+                                <img style="width:100%;object-fit: contain;" src="" alt="" class="resposiveImage">
+                                
+                        </div>
+                </div>
+        </template>
+
+        <form id="addImage" class="addImage">
+                <h3>Add responsive Image from URL with resizable container</h3>
+                <label for="srcImage">Image url</label>
+                <input type="text" name="srcImage" id="srcImage" required>
+                <label for="altImage">Alt text</label>
+                <input type="text" name="altImage" id="altImage">
+                <input id="addImageSubmit" type="submit" value="Add Image">
+        </form>
+        <br>
+
+
+<!-- <div class="container" id="container">
         <center>
 	<div class="card" id="card">
         <div class="topnav" id="myTopnav">
@@ -25,10 +47,17 @@
 		
 	</div>
 		<div class="textarea" id="textarea" autofocus contenteditable="true"></div>
-	</div>
+</div><br>
+               
+                <br>
         </center>
-</div>
-<script src="./assets/js/main.js"></script>
-<script src="./assets/js/components.js"></script>
+
+        
+        
+        <katsu-editor img="default.jpeg" data-text="Your card validation code (CVC) is an extra security feature — it is the last 3 or 4 numbers on the back of your card."></katsu-editor>
+</div> -->
+<!-- <script src="./assets/js/main.js"></script> -->
+<script src="./assets/js/addImage.js"></script>
+<!--<script src="./assets/components/components.js"></script>-->
 </body>
 </html>
