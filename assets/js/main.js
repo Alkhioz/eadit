@@ -1,49 +1,70 @@
-//let sizea4w = String(document.body.clientHeight * 0.7069555302166476)+'px';
-//document.getElementById("card").style.width = sizea4w;
+var image_form = document.querySelector("#addImage");
+var activeNode;
 
+let nodeFocus  = (target) =>  {
+    let resizableContainer = target.parentElement;
+    let resizableContainerCurrentWidth = resizableContainer.offsetWidth+'px';
+    resizableContainer.classList.add("resizableContainerResize");
+    resizableContainer.classList.remove("resizableContainerFix");
+    resizableContainer.style.width = resizableContainerCurrentWidth;
+    resizableContainer.style.maxWidth = "100%";
+    activeNode = resizableContainer;    
+}
 
-let size = String(document.body.clientHeight - 20)+'px';
-let bar_size = String(document.body.clientHeight - 20 - document.getElementById("myTopnav").clientHeight - 50)+'px';
-document.getElementById("container").style.height = size;
-document.getElementById("card").style.height = size;
-document.getElementById("textarea").style.height = bar_size;
-function negrita() {
-  document.execCommand('bold');
-  document.getElementById("textarea").focus();
+let nodeLostFocus = () => {
+    let activeNodeCurrentWidth = activeNode.offsetWidth+'px';
+    activeNode.classList.add("resizableContainerFix");
+    activeNode.classList.remove("resizableContainerResize");
+    activeNode.style.maxWidth = activeNodeCurrentWidth;
+    activeNode.style.width = "100%";
+    activeNode = false;  
 }
-function italica() {
-  document.execCommand('italic');
-  document.getElementById("textarea").focus();
-}
-function subrayado() {
-  document.execCommand('underline');
-  document.getElementById("textarea").focus();
-}
-function imagen() {
-  document.getElementById('file-input').click();
-}
-document.getElementById('file-input').onchange = e => { 
 
-   // getting a hold of the file reference
-   var file = e.target.files[0]; 
-
-   // setting up the reader
-   var reader = new FileReader();
-   reader.readAsDataURL(file,'UTF-8');
-
-   // here we tell the reader what to do when it's done reading...
-   reader.onload = readerEvent => {
-      var content = readerEvent.target.result; // this is the content!
-      document.execCommand('insertImage', false, content);
-      document.getElementById("textarea").focus();
-   }
-
+window.onclick = function(e) {
+    let event = e || window.event;
+    let target = event.target || event.srcElement;
+    if(target.classList.contains("responsiveImage")){
+        nodeFocus(target);
+    }else{
+        if(activeNode){
+            nodeLostFocus();
+        }
+        
+    }
 }
-function centrar() {
-  document.execCommand('justifyCenter');
-  document.getElementById("textarea").focus();
+
+if(document.contains(image_form)){
+    image_form.addEventListener('submit', ()=>{
+
+        event.preventDefault();
+        let imageSrc = document.querySelector("#srcImage").value;
+        let imageAlt = document.querySelector("#altImage").value;
+        let templateImageToInsert = document.querySelector("#imageTemplate");
+        let clone = templateImageToInsert.content.cloneNode(true);
+        let image = clone.querySelector("img");
+        image.src = imageSrc;
+        image.alt = imageAlt;
+        document.querySelector("body").appendChild(clone);
+
+    });
 }
-function justificar() {
-  document.execCommand('justifyFull');
-  document.getElementById("textarea").focus();
+
+//video
+var video_form = document.querySelector("#addVideo");
+var activeVideoNode;
+
+if(document.contains(video_form)){
+    video_form.addEventListener('submit', ()=>{
+
+        event.preventDefault();
+        let videoSrc = document.querySelector("#srcVideo").value;
+        
+            let templateVideoToInsertIframe = document.querySelector("#videoTemplate");
+            let clone = templateVideoToInsertIframe.content.cloneNode(true);
+            let video = clone.querySelector("iframe");
+            video.src = videoSrc;
+            document.querySelector("body").appendChild(clone);
+        
+
+    });
 }

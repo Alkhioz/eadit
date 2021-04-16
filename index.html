@@ -10,9 +10,16 @@
 
         <template id="imageTemplate">
                 <div  class="imageContainer">
-                                <div id="resizableContainer" class="resizableContainer">
-                                       <img src="" alt="" class="resposiveImage">
+                        <div id="resizableContainer" class="resizableContainer">
+                                <img src="" alt="" class="responsiveImage">
                         </div>
+                </div>
+        </template>
+
+        <template id="videoTemplate">
+                <div class="videoContainer">
+                        <!--<div class="videoControl" style="width: 50px;height: 50px;background: blue;"></div>-->
+                        <iframe class="responsiveVideo" width="100%" height="100%" src="" allowfullscreen></iframe>
                 </div>
         </template>
 
@@ -25,8 +32,15 @@
                 <input id="addImageSubmit" type="submit" value="Add Image">
         </form>
         <br>
-
-<script src="./assets/js/addImage.js"></script>
+        <form id="addVideo" class="addVideo">
+                <h3>Add responsive Video from URL with resizable container</h3>
+                <label for="srcVideo">Video url</label>
+                <input type="text" name="srcVideo" id="srcVideo" required>
+                <input id="addVideoSubmit" type="submit" value="Add Video">
+        </form>
+        <br>
+        
+<script src="./assets/js/main.js"></script>
 
 </body>
 </html>
