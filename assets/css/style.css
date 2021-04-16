@@ -1,6 +1,7 @@
-  /*.resizableContainer{
-   margin:auto;
-  }*/
+  .resizableContainer{
+    display: inline-block;
+    width: 100%;
+  }
 
   .responsiveImage{
     width:100%;
@@ -16,7 +17,7 @@
   .resizableContainerFix{
     resize : none;
     overflow : visible;
-    width : "100%";
+    width : 100%;
     border: none;
   }
 
