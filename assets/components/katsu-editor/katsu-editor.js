@@ -13,27 +13,6 @@ containerTemplate.innerHTML  = `
     <div  class="resizableContainer" contenteditable="false"></div>
   `;
 
-const createIcon = (iconSrc, iconTitle) =>{
-  let icon = document.createElement("img");
-  icon.src = iconSrc;
-  icon.classList.add("navBarIcon");
-  icon.title = iconTitle;
-  return icon;
-}
-
-const createNavbarBtn = (iconSrc, iconTitle, action) => {
-  let navbarBtn = document.createElement("A");
-  navbarBtn.classList.add("navBarBtn");
-  navbarBtn.href = "javascript:void(0);";
-  navbarBtn.appendChild(createIcon(iconSrc, iconTitle));
-  navbarBtn.onclick = () => action();
-  return navbarBtn;
-}
-
-const textToBold = () =>{
-  console.log("negrita");
-}
-
 // Create a class for the element
 class Katsu extends HTMLElement {
     constructor() {
@@ -51,14 +30,14 @@ class Katsu extends HTMLElement {
       topNavbar.classList.add("topnav");
       topNavbar.id = "myTopnav";
 
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/bold.svg", "Bold", textToBold));
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/italic.svg", "Italic", textToBold));
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/underline.svg", "Underline", textToBold));
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/image.svg", "Image", textToBold));
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/video.svg", "Video", textToBold));
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/code.svg", "Code", textToBold));
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/center.svg", "Center", textToBold));
-      topNavbar.appendChild(createNavbarBtn("./assets/icons/justify.svg", "Justify", textToBold));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/bold.svg", "Bold", this._textToBold));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/italic.svg", "Italic", this._textToItalic));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/underline.svg", "Underline", this._textToUnderline));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/image.svg", "Image", this._textToBold));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/video.svg", "Video", this._textToBold));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/code.svg", "Code", this._textToBold));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/center.svg", "Center", this._centerText));
+      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/justify.svg", "Justify", this._justifyText));
 
       let textArea = document.createElement("div");
       textArea.classList.add("textarea");
@@ -71,6 +50,45 @@ class Katsu extends HTMLElement {
       shadow.appendChild(loadCss('katsu-editor.css'));
       shadow.appendChild(card);
     }
+
+    _createIcon = (iconSrc, iconTitle) =>{
+      let icon = document.createElement("img");
+      icon.src = iconSrc;
+      icon.classList.add("navBarIcon");
+      icon.title = iconTitle;
+      return icon;
+    }
+    
+    _createNavbarBtn = (iconSrc, iconTitle, action) => {
+      let navbarBtn = document.createElement("A");
+      navbarBtn.classList.add("navBarBtn");
+      navbarBtn.href = "javascript:void(0);";
+      navbarBtn.appendChild( this._createIcon(iconSrc, iconTitle));
+      navbarBtn.onclick = () => action();
+      return navbarBtn;
+    }
+    //actions
+    _textToBold = () =>{
+      document.execCommand('bold');
+      this.shadowRoot.querySelector("#textarea").focus();
+    }
+    _textToItalic = () =>{
+      document.execCommand('italic');
+      this.shadowRoot.querySelector("#textarea").focus();
+    }
+    _textToUnderline = () =>{
+      document.execCommand('underline');
+      this.shadowRoot.querySelector("#textarea").focus();
+    }
+    _centerText = () =>{
+      document.execCommand('justifyCenter');
+      this.shadowRoot.querySelector("#textarea").focus();
+    }
+    _justifyText = () =>{
+      document.execCommand('justifyFull');
+      this.shadowRoot.querySelector("#textarea").focus();
+    }
+
   }
   
 customElements.define('katsu-editor', Katsu); //katsu es escarabajo en kichwa
