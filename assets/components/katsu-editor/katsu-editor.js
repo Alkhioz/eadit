@@ -1,3 +1,39 @@
+const loadCss = (cssName) => {
+  let script = document.currentScript;
+  let fullUrl = script.src;
+  let path = fullUrl.replace("katsu-editor.js","");
+  const cssFile = document.createElement('link');
+  cssFile.setAttribute('rel', 'stylesheet');
+  cssFile.setAttribute('href', path+cssName);
+  return cssFile;
+}
+
+const containerTemplate = document.createElement("template");
+containerTemplate.innerHTML  = `
+    <div  class="resizableContainer" contenteditable="false"></div>
+  `;
+
+const createIcon = (iconSrc, iconTitle) =>{
+  let icon = document.createElement("img");
+  icon.src = iconSrc;
+  icon.classList.add("navBarIcon");
+  icon.title = iconTitle;
+  return icon;
+}
+
+const createNavbarBtn = (iconSrc, iconTitle, action) => {
+  let navbarBtn = document.createElement("A");
+  navbarBtn.classList.add("navBarBtn");
+  navbarBtn.href = "javascript:void(0);";
+  navbarBtn.appendChild(createIcon(iconSrc, iconTitle));
+  navbarBtn.onclick = () => action();
+  return navbarBtn;
+}
+
+const textToBold = () =>{
+  console.log("negrita");
+}
+
 // Create a class for the element
 class Katsu extends HTMLElement {
     constructor() {
@@ -7,46 +43,34 @@ class Katsu extends HTMLElement {
       // Create a shadow root
       const shadow = this.attachShadow({mode: 'open'});
   
-      // Create spans
-      const wrapper = document.createElement('span');
-      wrapper.setAttribute('class', 'wrapper');
-  
-      const icon = document.createElement('span');
-      icon.setAttribute('class', 'icon');
-      icon.setAttribute('tabindex', 0);
-  
-      const info = document.createElement('span');
-      info.setAttribute('class', 'info');
-  
-      // Take attribute content and put it inside the info span
-      const text = this.getAttribute('data-text');
-      info.textContent = text;
-  
-      // Insert icon
-      let imgUrl;
-      if(this.hasAttribute('img')) {
-        imgUrl = this.getAttribute('img');
-      } else {
-        imgUrl = 'img/default.png';
-      }
-  
-      const img = document.createElement('img');
-      img.src = imgUrl;
-      icon.appendChild(img);
-  
-      // Apply external styles to the shadow dom
-      const linkElem = document.createElement('link');
-      linkElem.setAttribute('rel', 'stylesheet');
-      linkElem.setAttribute('href', 'assets/components/katsu-editor/katsu-editor.css');
-  
-      // Attach the created elements to the shadow dom
-      shadow.appendChild(linkElem);
-      shadow.appendChild(wrapper);
-      wrapper.appendChild(icon);
-      wrapper.appendChild(info);
+      let card = document.createElement("div");
+      card.classList.add("card");
+      card.id = "card"
+
+      let topNavbar = document.createElement("div");
+      topNavbar.classList.add("topnav");
+      topNavbar.id = "myTopnav";
+
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/bold.svg", "Bold", textToBold));
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/italic.svg", "Italic", textToBold));
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/underline.svg", "Underline", textToBold));
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/image.svg", "Image", textToBold));
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/video.svg", "Video", textToBold));
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/code.svg", "Code", textToBold));
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/center.svg", "Center", textToBold));
+      topNavbar.appendChild(createNavbarBtn("./assets/icons/justify.svg", "Justify", textToBold));
+
+      let textArea = document.createElement("div");
+      textArea.classList.add("textarea");
+      textArea.id = "textarea";
+      textArea.contentEditable = "true";
+
+      card.appendChild(topNavbar);
+      card.appendChild(textArea);
+
+      shadow.appendChild(loadCss('katsu-editor.css'));
+      shadow.appendChild(card);
     }
   }
   
-  // Define the new element
-//customElements.define('popup-info', PopUpInfo);
 customElements.define('katsu-editor', Katsu); //katsu es escarabajo en kichwa

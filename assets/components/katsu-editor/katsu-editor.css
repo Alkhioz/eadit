@@ -1,27 +1,124 @@
-.wrapper {
-    position: relative;
-  }
+.overlay{
+  width: 100%;
+  position: fixed;
+  position: absolute;
+  display: grid;
+  z-index: 600;
+  margin: auto;
+  pointer-events: none;
+  place-items: center;
+}  
+
+.imageModal, .videoModal, .codeModal{
+  background: #cececea2;
+  backdrop-filter: blur(5px);
+  pointer-events: auto;
+  max-width: 600px;
+  display: none;
+}
+
+.addImage, .addVideo, .addCode{
+  display: grid;
+  align-items: center;
+  margin: 20px;
+}
   
-  .info {
-    font-size: 0.8rem;
-    width: 200px;
+  .resizableContainer{
     display: inline-block;
-    border: 1px solid black;
-    padding: 10px;
-    background: white;
-    border-radius: 10px;
-    opacity: 0;
-    transition: 0.6s all;
+    width: 100%;
+  }
+
+  .responsiveImage{
+    width:100%;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  .codeContainer{
+    width: 98%;
+    max-height: 300px;
+  }
+
+  .resizableContainerResize{
+    margin:auto;
+    resize: horizontal;
+    overflow: auto;
+    border: 5px solid #1e91d9;
+  }
+  .resizableContainerFix{
+    resize : none;
+    overflow : visible;
+    width : 100%;
+    border: none;
+  }
+
+  .videoKeepRatio{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden; 
+    display: block;
+  }
+.responsiveVideo {
     position: absolute;
-    bottom: 20px;
-    left: 10px;
-    z-index: 3;
-  }
-  
-  img {
-    width: 1.2rem;
-  }
-  
-  .icon:hover + .info, .icon:focus + .info {
-    opacity: 1;
-  }
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.responsiveVideoOverlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  display: block;
+  top: 0;
+  margin: 0;
+  background: #2b2b2ba2;
+  backdrop-filter: blur(5px);
+}
+
+
+/*OLD*/
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: rgb(136, 136, 136);
+}
+
+.card {
+  width: 100%;
+  background-color: #FFF;
+  outline: 1px solid;
+  padding: 5px;
+}
+.textarea {
+  outline: 1px solid;
+  margin: 10px;
+  padding: 10px;
+}
+.topnav {
+  background-color: #FFF;
+  margin: 10px;
+}
+
+.navBarBtn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-block;
+  padding: 0;
+}
+
+.navBarBtn:hover {
+  background-color: #d4ecff;
+}
+
+.navBarIcon{
+  margin: 0;
+  padding: 0;
+  max-width: 40px;
+}
