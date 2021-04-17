@@ -32,7 +32,6 @@ window.onclick = function(e) {
         if(activeNode){
             nodeLostFocus();
         }
-        
     }
 }
 
@@ -127,12 +126,6 @@ assignCancelBtn("#addCodeCancelBtn", "#codeModal");
 
 
 /*OLD */
-
-let size = String(document.body.clientHeight - 20)+'px';
-let bar_size = String(document.body.clientHeight - 20 - document.querySelector("#myTopnav").clientHeight - 50)+'px';
-document.querySelector("#container").style.height = size;
-document.querySelector("#card").style.height = size;
-document.querySelector("#textarea").style.height = bar_size;
 
 function negrita() {
   document.execCommand('bold');

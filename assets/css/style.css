@@ -31,15 +31,13 @@
   .responsiveImage{
     width:100%;
     object-fit: contain;
+    margin: auto;
   }
 
   .codeContainer{
     width: 98%;
     max-height: 300px;
   }
-
-
-  
 
   .resizableContainerResize{
     margin:auto;
@@ -87,63 +85,40 @@ body, html {
   height: 100%;
   width: 100%;
   margin: 0;
-}
-.container {
-  width: calc(100vw - 20px);
-  background-color: #A7A7A7;
-  top:0;
-  left:0;
-  padding: 10px;
+  background-color: rgb(136, 136, 136);
 }
 
 .card {
   width: 100%;
-  top:0;
-  left:0;
   background-color: #FFF;
+  outline: 1px solid;
+  padding: 5px;
 }
 .textarea {
-  margin-top: 20px;
-  overflow-y:scroll;
-  padding: 0 20px 20px 20px;
-  width: calc(100% - 40px);
-  outline: none;
-  max-height: 100vh;
-  text-align: justify;
-}
-.textarea img{
-  resize: both;
+  outline: 1px solid;
+  margin: 10px;
+  padding: 10px;
 }
 .topnav {
-  
   background-color: #FFF;
-  border-bottom: 2px dotted #000;
-  overflow: auto;
+  margin: 10px;
 }
 
-.topnav a {
+.navBarBtn {
   display: block;
-  color: #0DE9C4;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   font-size: 15px;
-  border-bottom: 1px;
   display: inline-block;
+  padding: 0;
 }
 
-.topnav a:hover {
-  background-color: #EDF7F5;
-  color: #0DE9C4;
+.navBarBtn:hover {
+  background-color: #d4ecff;
 }
 
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-@media (max-width: 800px) {
-  .card {
-      width: 100%;
-    }
+.navBarIcon{
+  margin: 0;
+  padding: 0;
+  max-width: 40px;
 }

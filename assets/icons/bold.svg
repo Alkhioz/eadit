@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,48 +7,36 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="100"
-   height="100"
-   version="1.1"
-   viewBox="0 0 26.458 26.458"
-   id="svg10"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
    sodipodi:docname="bold.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+   id="svg12"
+   viewBox="0 0 26.458 26.458"
+   version="1.1"
+   height="100"
+   width="100">
   <defs
-     id="defs14" />
+     id="defs16" />
   <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="640"
-     inkscape:window-height="480"
-     id="namedview12"
+     inkscape:current-layer="text11"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-8"
+     inkscape:window-x="1358"
+     inkscape:cy="51.761896"
+     inkscape:cx="34.791345"
+     inkscape:zoom="3.2102648"
      showgrid="false"
-     showguides="false"
-     inkscape:guide-bbox="true"
-     inkscape:zoom="2.36"
-     inkscape:cx="42.584746"
-     inkscape:cy="50"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg10">
-    <sodipodi:guide
-       position="13.229,13.229"
-       orientation="0,1"
-       id="guide844"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="13.45322,29.709195"
-       orientation="1,0"
-       id="guide846"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
+     id="namedview14"
+     inkscape:window-height="705"
+     inkscape:window-width="1366"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata2">
     <rdf:RDF>
@@ -59,25 +45,34 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="matrix(0.7811367,0,0,0.7811367,2.9795361,-208.42928)"
-     id="g8">
-    <text
-       x="1.600028"
-       y="296.06454"
-       font-size="33.681px"
-       letter-spacing="0px"
-       word-spacing="0px"
-       style="font-size:33.68099976px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;stroke-width:0.84201002"
-       xml:space="preserve"
-       id="text6"><tspan
-         x="1.600028"
-         y="296.06454"
-         id="tspan4"
-         style="font-family:sans-serif;stroke-width:0.84201002">B</tspan></text>
+     id="g10"
+     transform="translate(0 -270.54)">
+    <path
+       id="path4"
+       style="paint-order:markers fill stroke"
+       fill-opacity=".99608"
+       d="m5.9297 3.1484v3.1699 90.4h0.25195 2.918 42.328 42.328 2.918 0.25195v-90.4-3.1699h-3.1699-42.328-42.328-3.1699zm3.1699 3.1699h42.328 42.328v87.23h-42.328-42.328v-87.23z"
+       transform="matrix(.26458 0 0 .26458 0 270.54)" />
+    <g
+       aria-label="&lt;/&gt;"
+       id="text11"
+       style="font-size:10.5832px;line-height:1.25;font-family:Montserrat;-inkscape-font-specification:Montserrat;letter-spacing:0px;word-spacing:0px;stroke-width:0.26458">
+      <text
+         id="text14"
+         y="289.9249"
+         x="6.5159702"
+         style="font-size:21.1664px;line-height:1.25;font-family:Montserrat;-inkscape-font-specification:Montserrat;letter-spacing:0px;word-spacing:0px;stroke-width:0.0700026"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:17.6387px;font-family:Montserrat;-inkscape-font-specification:'Montserrat Heavy';stroke-width:0.0700026"
+           y="289.9249"
+           x="6.5159702"
+           id="tspan12"
+           sodipodi:role="line">B</tspan></text>
+    </g>
   </g>
 </svg>
