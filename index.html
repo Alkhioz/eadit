@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/external/prism/prism.css">
 <title>EaDit</title>
 
 </head>
@@ -21,6 +22,10 @@
                         <iframe class="responsiveVideo" src="" allowfullscreen></iframe>
                         <div class="responsiveVideoOverlay" class="responsiveVideoOverlay"></div>
                 </div>
+        </template>
+
+        <template id="codeTemplate">
+                        <pre class="codeContainer" contenteditable="false"><code style="pointer-events: none;"></code></pre>
         </template>
         
 
@@ -50,6 +55,29 @@
                                                 <input type="reset" value="Cancel" id="addVideoCancelBtn">
                                         </form>
                                 </div>
+
+                                <div class="codeModal" id="codeModal">
+                                        <form id="addCode" class="addCode">
+                                                <h3>Add Code</h3>
+                                                <label for="textCode">Code</label>
+                                                <!--<input type="text" name="textCode" id="textCode" required>-->
+                                                <textarea id="textCode" name="textCode" rows="4" cols="50">
+                                                       
+                                                </textarea>
+                                                <label for="langCode">Languaje</label>
+                                                <select id="langCode" name="lanCode">
+                                                        <option value="language-php">PHP</option>
+                                                        <option value="language-javascript">JAVASCRIPT</option>
+                                                        <option value="language-css">HTML</option>
+                                                        <option value="language-python">PYTHON</option>
+                                                        <option value="language-sql">SQL</option>
+                                                        <option value="language-java">JAVA</option>
+                                                        <option value="language-css">CSS</option>
+                                                </select>
+                                                <input id="addCodeSubmit" type="submit" value="Add Code">
+                                                <input type="reset" value="Cancel" id="addCodeCancelBtn">
+                                        </form>
+                                </div>
                         </div>
                                 <div class="topnav" id="myTopnav">
                                         
@@ -59,6 +87,7 @@
                                         <a href="javascript:void(0);" onclick="subrayado()"><img src="./assets/icons/underline.svg" style="width:30px;" title="Subrayado"></a>
                                         <a href="javascript:void(0);" onclick="imagen()"><img src="./assets/icons/image.svg" style="width:30px;" title="Imagen"></a>
                                         <a href="javascript:void(0);" onclick="video()"><img src="./assets/icons/video.svg" style="width:30px;" title="Video"></a>
+                                        <a href="javascript:void(0);" onclick="codigo()"><img src="./assets/icons/video.svg" style="width:30px;" title="Codigo"></a>
                                         <a href="javascript:void(0);" onclick="centrar()"><img src="./assets/icons/center.svg" style="width:30px;" title="Centrar"></a>
                                         <a href="javascript:void(0);" onclick="justificar()"><img src="./assets/icons/justify.svg" style="width:30px;" title="Justificar"></a>
                         
@@ -71,6 +100,6 @@
         </div>
         
 <script src="./assets/js/main.js"></script>
-
+<script src="./assets/external/prism/prism.js"></script>
 </body>
 </html>

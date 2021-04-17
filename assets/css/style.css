@@ -9,7 +9,7 @@
   place-items: center;
 }  
 
-.imageModal, .videoModal{
+.imageModal, .videoModal, .codeModal{
   background: #cececea2;
   backdrop-filter: blur(5px);
   pointer-events: auto;
@@ -17,7 +17,7 @@
   display: none;
 }
 
-.addImage, .addVideo{
+.addImage, .addVideo, .addCode{
   display: grid;
   align-items: center;
   margin: 20px;
@@ -32,6 +32,14 @@
     width:100%;
     object-fit: contain;
   }
+
+  .codeContainer{
+    width: 98%;
+    max-height: 300px;
+  }
+
+
+  
 
   .resizableContainerResize{
     margin:auto;
@@ -54,7 +62,7 @@
     overflow: hidden; 
     display: block;
   }
-.responsiveVideo { 
+.responsiveVideo {
     position: absolute;
     top: 0;
     left: 0;
@@ -72,7 +80,6 @@
   background: #2b2b2ba2;
   backdrop-filter: blur(5px);
 }
-
 
 
 /*OLD*/

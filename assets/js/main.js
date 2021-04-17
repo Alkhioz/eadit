@@ -26,7 +26,7 @@ window.onclick = function(e) {
     let event = e || window.event;
     let target = event.target || event.srcElement;
 
-    if(target.classList.contains("responsiveImage") || target.classList.contains("responsiveVideoOverlay")){
+    if(target.classList.contains("responsiveImage") || target.classList.contains("responsiveVideoOverlay")  ){
         nodeFocus(target);
     }else{
         if(activeNode){
@@ -79,6 +79,28 @@ if(document.contains(video_form)){
     });
 }
 
+var code_form = document.querySelector("#addCode");
+
+if(document.contains(code_form)){
+    code_form.addEventListener('submit', ()=>{
+        event.preventDefault();
+        let codeText = document.querySelector("#textCode").value;
+        let codeOption = document.querySelector("#langCode");
+        let lanCode = codeOption.options[codeOption.selectedIndex].value;
+        let templateCodeToInsert = document.querySelector("#codeTemplate");
+        let clone = templateCodeToInsert.content.cloneNode(true);
+        let code = clone.querySelector("code");
+        let pre = clone.querySelector("pre");
+        code.innerHTML = codeText;
+        code.classList.add(lanCode);
+        pre.classList.add(lanCode);
+        document.querySelector("#textarea").appendChild(clone);
+        closeModal("#codeModal");
+        code_form.reset();
+        Prism.highlightAll()
+    });
+}
+
 /* Modal Logic */
 
 let openModal = (modalId)  => {
@@ -88,11 +110,12 @@ let closeModal = (modalId)  => {
     document.querySelector(modalId).style.display = "none";
 }
 
-//#addImageCancelBtn
+
 let assignCancelBtn = (idBtn, idModal) => {
-    let cancelBtnImage = document.querySelector(idBtn);
-    if(document.contains(cancelBtnImage)){
-        cancelBtnImage.onclick = () => {
+    let cancelBtn = document.querySelector(idBtn);
+   
+    if(document.contains(cancelBtn)){
+        cancelBtn.onclick = function () {
             closeModal(idModal);
         };
     }
@@ -100,6 +123,7 @@ let assignCancelBtn = (idBtn, idModal) => {
 
 assignCancelBtn("#addImageCancelBtn", "#imageModal");
 assignCancelBtn("#addVideoCancelBtn", "#videoModal");
+assignCancelBtn("#addCodeCancelBtn", "#codeModal");
 
 
 /*OLD */
@@ -127,8 +151,10 @@ function imagen() {
 }
 function video() {
     openModal("#videoModal");
-  }
-
+}
+function codigo() {
+    openModal("#codeModal");
+}
 function centrar() {
   document.execCommand('justifyCenter');
   document.querySelector("#textarea").focus();
