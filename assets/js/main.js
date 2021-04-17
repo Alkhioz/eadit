@@ -1,4 +1,3 @@
-var image_form = document.querySelector("#addImage");
 var activeNode;
 
 let nodeFocus  = (target) =>  {
@@ -42,8 +41,10 @@ let createResizableContainer = (newChild) =>{
     let clone = templateContainer.content.cloneNode(true);
     let resizableContainer = clone.querySelector(".resizableContainer");
     resizableContainer.appendChild(newChild);
-    document.querySelector("body").appendChild(clone);
+    document.querySelector("#textarea").appendChild(clone);
 }
+
+var image_form = document.querySelector("#addImage");
 
 if(document.contains(image_form)){
     image_form.addEventListener('submit', ()=>{
@@ -56,10 +57,12 @@ if(document.contains(image_form)){
         image.src = imageSrc;
         image.alt = imageAlt;
         createResizableContainer(clone);
+        closeModal("#imageModal");
+        image_form.reset();
     });
 }
 
-//video
+
 var video_form = document.querySelector("#addVideo");
 
 if(document.contains(video_form)){
@@ -71,5 +74,67 @@ if(document.contains(video_form)){
         let video = clone.querySelector("iframe");
         video.src = videoSrc;
         createResizableContainer(clone);
+        closeModal("#videoModal");
+        video_form.reset();
     });
+}
+
+/* Modal Logic */
+
+let openModal = (modalId)  => {
+    document.querySelector(modalId).style.display = "block";
+}
+let closeModal = (modalId)  => {
+    document.querySelector(modalId).style.display = "none";
+}
+
+//#addImageCancelBtn
+let assignCancelBtn = (idBtn, idModal) => {
+    let cancelBtnImage = document.querySelector(idBtn);
+    if(document.contains(cancelBtnImage)){
+        cancelBtnImage.onclick = () => {
+            closeModal(idModal);
+        };
+    }
+}
+
+assignCancelBtn("#addImageCancelBtn", "#imageModal");
+assignCancelBtn("#addVideoCancelBtn", "#videoModal");
+
+
+/*OLD */
+
+let size = String(document.body.clientHeight - 20)+'px';
+let bar_size = String(document.body.clientHeight - 20 - document.querySelector("#myTopnav").clientHeight - 50)+'px';
+document.querySelector("#container").style.height = size;
+document.querySelector("#card").style.height = size;
+document.querySelector("#textarea").style.height = bar_size;
+
+function negrita() {
+  document.execCommand('bold');
+  document.querySelector("#textarea").focus();
+}
+function italica() {
+  document.execCommand('italic');
+  document.querySelector("#textarea").focus();
+}
+function subrayado() {
+  document.execCommand('underline');
+  document.querySelector("#textarea").focus();
+}
+function imagen() {
+  openModal("#imageModal");
+}
+function video() {
+    openModal("#videoModal");
+  }
+
+function centrar() {
+  document.execCommand('justifyCenter');
+  document.querySelector("#textarea").focus();
+}
+
+function justificar() {
+  document.execCommand('justifyFull');
+  document.querySelector("#textarea").focus();
 }

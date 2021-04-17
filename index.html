@@ -9,7 +9,7 @@
 <body>
 
         <template id="containerTemplate">
-                <div  class="resizableContainer"></div>
+                <div  class="resizableContainer" contenteditable="false"></div>
         </template>
 
         <template id="imageTemplate">
@@ -22,23 +22,53 @@
                         <div class="responsiveVideoOverlay" class="responsiveVideoOverlay"></div>
                 </div>
         </template>
+        
 
-        <form id="addImage" class="addImage">
-                <h3>Add responsive Image from URL with resizable container</h3>
-                <label for="srcImage">Image url</label>
-                <input type="text" name="srcImage" id="srcImage" required>
-                <label for="altImage">Alt text</label>
-                <input type="text" name="altImage" id="altImage">
-                <input id="addImageSubmit" type="submit" value="Add Image">
-        </form>
-        <br>
-        <form id="addVideo" class="addVideo">
-                <h3>Add responsive Video from URL with resizable container</h3>
-                <label for="srcVideo">Video url</label>
-                <input type="text" name="srcVideo" id="srcVideo" required>
-                <input id="addVideoSubmit" type="submit" value="Add Video">
-        </form>
-        <br>
+
+        <div class="container" id="container">
+                
+                <div class="card" id="card">
+                        <div class="overlay">
+                                <div class="imageModal" id="imageModal">
+                                        <form id="addImage" class="addImage">
+                                                <h3>Add Image</h3>
+                                                <label for="srcImage">Image url</label>
+                                                <input type="text" name="srcImage" id="srcImage" required>
+                                                <label for="altImage">Alt text</label>
+                                                <input type="text" name="altImage" id="altImage">
+                                                <input id="addImageSubmit" type="submit" value="Add Image">
+                                                <input type="reset" value="Cancel" id="addImageCancelBtn">
+                                        </form>
+                                </div>
+                                
+                                <div class="videoModal" id="videoModal">
+                                        <form id="addVideo" class="addVideo">
+                                                <h3>Add Video</h3>
+                                                <label for="srcVideo">Video url</label>
+                                                <input type="text" name="srcVideo" id="srcVideo" required>
+                                                <input id="addVideoSubmit" type="submit" value="Add Video">
+                                                <input type="reset" value="Cancel" id="addVideoCancelBtn">
+                                        </form>
+                                </div>
+                        </div>
+                                <div class="topnav" id="myTopnav">
+                                        
+                                        <!--<a ><img src="./assets/icons/save.svg" style="width:30px;" title="Guardar"></a>-->
+                                        <a  href="javascript:void(0);" onclick="negrita()"><img src="./assets/icons/bold.svg" style="width:30px;" title="Negrita"></a>
+                                        <a href="javascript:void(0);" onclick="italica()"><img src="./assets/icons/italic.svg" style="width:30px;" title="Itálica"></a>
+                                        <a href="javascript:void(0);" onclick="subrayado()"><img src="./assets/icons/underline.svg" style="width:30px;" title="Subrayado"></a>
+                                        <a href="javascript:void(0);" onclick="imagen()"><img src="./assets/icons/image.svg" style="width:30px;" title="Imagen"></a>
+                                        <a href="javascript:void(0);" onclick="video()"><img src="./assets/icons/video.svg" style="width:30px;" title="Video"></a>
+                                        <a href="javascript:void(0);" onclick="centrar()"><img src="./assets/icons/center.svg" style="width:30px;" title="Centrar"></a>
+                                        <a href="javascript:void(0);" onclick="justificar()"><img src="./assets/icons/justify.svg" style="width:30px;" title="Justificar"></a>
+                        
+                                        <input id="file-input" type="file" name="name" style="display: none;" accept="image/*"  />
+                                        
+                                </div>
+                        <div class="textarea" id="textarea" autofocus contenteditable="true"></div>
+                </div>
+                
+        </div>
         
 <script src="./assets/js/main.js"></script>
 
