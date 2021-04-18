@@ -86,17 +86,40 @@ addCodeTemplate.innerHTML  = `
 class Eadit extends HTMLElement {
     get value(){
       let textAreaContent = this.shadowRoot.querySelector("#textarea").innerHTML;
-      //textAreaContent = textAreaContent.replaceAll('"','&#34;')
-      //textAreaContent = textAreaContent.replaceAll("'","&#39;")
+      textAreaContent = textAreaContent.replaceAll('<div class="responsiveVideoOverlay"></div>', '');
+      return textAreaContent;
+    }
+    get valueClean(){
+      let textAreaContent = this.shadowRoot.querySelector("#textarea").innerHTML;
+      textAreaContent = textAreaContent.replaceAll('"','&#34;')
+      textAreaContent = textAreaContent.replaceAll("'","&#39;")
       textAreaContent = textAreaContent.replaceAll('<div class="responsiveVideoOverlay"></div>', '');
       return textAreaContent;
     }
     set value(node){
-      //node = node.replaceAll("'","&#39;")
-      //node = node.replaceAll('"','&#34;')
       let nodeTemplate = document.createElement("template");
       nodeTemplate.innerHTML = node;
       let newNode = nodeTemplate.content.cloneNode(true)
+      let responsiveVideos = newNode.querySelectorAll(".videoKeepRatio");
+      let overlayVideo = document.createElement("div");
+      overlayVideo.classList.add("responsiveVideoOverlay");
+      responsiveVideos.forEach(element => {
+        element.appendChild(overlayVideo);
+      });
+      this.shadowRoot.querySelector("#textarea").appendChild(newNode);
+    }
+    set valueClean(node){
+      node = node.replaceAll("&#39;", "'")
+      node = node.replaceAll('&#34;', '"')
+      let nodeTemplate = document.createElement("template");
+      nodeTemplate.innerHTML = node;
+      let newNode = nodeTemplate.content.cloneNode(true)
+      let responsiveVideos = newNode.querySelectorAll(".videoKeepRatio");
+      let overlayVideo = document.createElement("div");
+      overlayVideo.classList.add("responsiveVideoOverlay");
+      responsiveVideos.forEach(element => {
+        element.appendChild(overlayVideo);
+      });
       this.shadowRoot.querySelector("#textarea").appendChild(newNode);
     }
     constructor() {
