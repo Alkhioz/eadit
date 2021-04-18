@@ -41,7 +41,7 @@ const videoTemplate = document.createElement("template");
 videoTemplate.innerHTML  = `
     <div class="videoKeepRatio">
       <iframe class="responsiveVideo" src="" allowfullscreen></iframe>
-      <div class="responsiveVideoOverlay" class="responsiveVideoOverlay"></div>
+      <div class="responsiveVideoOverlay"></div>
     </div>
     `;
 
@@ -95,13 +95,14 @@ addCodeTemplate.innerHTML  = `
 class Eadit extends HTMLElement {
     get value(){
       let textAreaContent = this.shadowRoot.querySelector("#textarea").innerHTML;
-      textAreaContent = textAreaContent.replaceAll("'","&#39;")
-      textAreaContent = textAreaContent.replaceAll('"','&#34;')
+      //textAreaContent = textAreaContent.replaceAll('"','&#34;')
+      //textAreaContent = textAreaContent.replaceAll("'","&#39;")
+      textAreaContent = textAreaContent.replaceAll('<div class="responsiveVideoOverlay"></div>', '');
       return textAreaContent;
     }
     set value(node){
-      node = node.replaceAll("'","&#39;")
-      node = node.replaceAll('"','&#34;')
+      //node = node.replaceAll("'","&#39;")
+      //node = node.replaceAll('"','&#34;')
       let nodeTemplate = document.createElement("template");
       nodeTemplate.innerHTML = node;
       let newNode = nodeTemplate.content.cloneNode(true)

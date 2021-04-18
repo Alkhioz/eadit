@@ -3,10 +3,37 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EaDit</title>
-
+<link rel="stylesheet" href="./eadit/external/prism/prism.css">
+<link rel="stylesheet" href="./eadit/eadit.css">
 </head>
 <body>
-        <eadit-input></eadit-input>
+<div style="padding: 10px;">
+        <h3>Eadit WYSIWYG</h3>
+        <p>This is just a simple WYSIWYG text editor custom element i made to add to a blog project.</p>
+        <p>It serves two main purposes:</p>
+        <ul>
+                <li>Add responsive and resizable externa images and videos.</li>
+                <li>Let me add code sections with prism.css styling.</li>
+        </ul>
+        <p>This is the custom element eadit-input:</p>
+        <eadit-input id="EaditElement"></eadit-input>
+        <br>
+        <p>You can press this button to retrieve eadit-input's content.</p>
+        <input type="button" value="Press to get data" onclick="getData()">
+        <br><br>
+        <div class="testContent" id="testContent"></div>
+</div>
         <script src="./eadit/eadit.js"></script>
+        <script src="./eadit/external/prism/prism.js"></script>
+        <script>
+                getData = () => {
+                        let data = document.querySelector("#EaditElement").value;
+                        document.querySelector("#testContent").innerHTML = data;
+                        Prism.highlightAll();
+                }
+                document.addEventListener("DOMContentLoaded", ()=>{
+                        document.querySelector("#EaditElement").value = "<div>I was added at document load</div>";
+                });
+        </script>
 </body>
 </html>
