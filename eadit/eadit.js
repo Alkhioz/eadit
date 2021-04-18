@@ -18,15 +18,6 @@ const loadIcon = (iconName) =>{
   return path+iconName;
 }
 
-/*const loadScript = (jsName) => {
-  let path = getCurrentPath();   
-  let script  = document.createElement('script'); 
-  script.src  = path+jsName; 
-  script.type = 'text/javascript'; 
-  script.defer = true;
-  return script; 
-}*/
-
 const containerTemplate = document.createElement("template");
 containerTemplate.innerHTML  = `
     <div  class="resizableContainer" contenteditable="false"></div>
@@ -164,7 +155,6 @@ class Eadit extends HTMLElement {
       shadow.appendChild(loadCss('eadit.css'));
       shadow.appendChild(loadCss('external/prism/prism.css'));
       shadow.appendChild(card);
-      //shadow.appendChild(loadScript('external/prism/prism.js'));
 
       this._assignCancelBtn("addImageCancelBtn", "imageModal");
       this._assignCancelBtn("addVideoCancelBtn", "videoModal");

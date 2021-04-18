@@ -12,7 +12,7 @@
         <p>This is just a simple WYSIWYG text editor custom element i made to add to a blog project.</p>
         <p>It serves two main purposes:</p>
         <ul>
-                <li>Add responsive and resizable externa images and videos.</li>
+                <li>Add responsive and resizable external images and videos.</li>
                 <li>Let me add code sections with prism.css styling.</li>
         </ul>
         <p>This is the custom element eadit-input:</p>
@@ -32,7 +32,14 @@
                         Prism.highlightAll();
                 }
                 document.addEventListener("DOMContentLoaded", ()=>{
-                        document.querySelector("#EaditElement").value = "<div>I was added at document load</div>";
+                        document.querySelector("#EaditElement").value = `
+                        <div>I was added at document load</div>
+                        <div class="resizableContainer resizableContainerFix" contenteditable="false" style="width: 100%; max-width: 459px;">
+                                <div class="videoKeepRatio">
+                                        <iframe class="responsiveVideo" src="https://www.youtube.com/embed/BmIHctspUHU" allowfullscreen=""></iframe>
+      
+                                </div>
+                        </div>`;
                 });
         </script>
 </body>
