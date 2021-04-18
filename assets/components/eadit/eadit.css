@@ -42,7 +42,10 @@
   }
 
   .codeContainer{
-    width: 98%;
+    width: 100%;
+    /*display: inline-block;*/
+  }
+  .codeContainer pre {
     max-height: 300px;
   }
 

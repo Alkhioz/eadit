@@ -1,12 +1,26 @@
-const loadCss = (cssName) => {
+const getCurrentPath = () =>{
   let script = document.currentScript;
   let fullUrl = script.src;
   let path = fullUrl.replace("eadit.js","");
+  return path;
+}
+
+const loadCss = (cssName) => {
+  let path = getCurrentPath();
   const cssFile = document.createElement('link');
   cssFile.setAttribute('rel', 'stylesheet');
   cssFile.setAttribute('href', path+cssName);
   return cssFile;
 }
+
+/*const loadScript = (jsName) => {
+  let path = getCurrentPath();   
+  let script  = document.createElement('script'); 
+  script.src  = path+jsName; 
+  script.type = 'text/javascript'; 
+  script.defer = true;
+  return script; 
+}*/
 
 const containerTemplate = document.createElement("template");
 containerTemplate.innerHTML  = `
@@ -28,7 +42,9 @@ videoTemplate.innerHTML  = `
 
 const codeTemplate = document.createElement("template");
 codeTemplate.innerHTML  = `
-  <pre class="codeContainer" contenteditable="false"><code style="pointer-events: none;"></code></pre>
+  <div class="codeContainer" contenteditable="false">
+    <pre ><code style="pointer-events: none;"></code></pre>
+    </div>
     `;
 
 const addImageTemplate = document.createElement("template");
@@ -94,6 +110,11 @@ class Eadit extends HTMLElement {
       let card = document.createElement("div");
       card.classList.add("card");
       card.id = "card"
+      card.onclick = (e) =>{
+        let event = e || window.event;
+        let target = event.target || event.srcElement;
+        this._checkResizable(target);
+      }
 
       let topNavbar = document.createElement("div");
       topNavbar.classList.add("topnav");
@@ -119,17 +140,23 @@ class Eadit extends HTMLElement {
       card.appendChild(imageModal);
       card.appendChild(codeModal);
       card.appendChild(videoModal);
-
+      
       shadow.appendChild(loadCss('eadit.css'));
+      shadow.appendChild(loadCss('external/prism/prism.css'));
       shadow.appendChild(card);
+      //shadow.appendChild(loadScript('external/prism/prism.js'));
 
       this._assignCancelBtn("addImageCancelBtn", "imageModal");
       this._assignCancelBtn("addVideoCancelBtn", "videoModal");
       this._assignCancelBtn("addCodeCancelBtn", "codeModal");
+
       this._addEventToForm("imageModal", "addImage", this._onImageAdd, true);
       this._addEventToForm("videoModal", "addVideo", this._onVideoAdd, true);
       this._addEventToForm("codeModal", "addCode", this._onCodeAdd, false);
+
     }
+    //variable
+    activeNode; 
 
     //utils
     _openModal = (modalId)  => {
@@ -186,6 +213,35 @@ class Eadit extends HTMLElement {
       code.classList.add(lanCode);
       pre.classList.add(lanCode);
       return clone;
+    }
+    _nodeFocus  = (target) =>  {
+        if(this.activeNode){
+            this._nodeLostFocus();
+        }
+        let resizableContainer = target.closest(".resizableContainer");
+        let resizableContainerCurrentWidth = resizableContainer.offsetWidth+'px';
+        resizableContainer.classList.add("resizableContainerResize");
+        resizableContainer.classList.remove("resizableContainerFix");
+        resizableContainer.style.width = resizableContainerCurrentWidth;
+        resizableContainer.style.maxWidth = "100%";
+        this.activeNode = resizableContainer;    
+    }
+    _nodeLostFocus = () => {
+        let activeNodeCurrentWidth = this.activeNode.offsetWidth+'px';
+        this.activeNode.classList.add("resizableContainerFix");
+        this.activeNode.classList.remove("resizableContainerResize");
+        this.activeNode.style.maxWidth = activeNodeCurrentWidth;
+        this.activeNode.style.width = "100%";
+        this.activeNode = false;  
+    }
+    _checkResizable = (target) => {
+      if(target.classList.contains("responsiveImage") || target.classList.contains("responsiveVideoOverlay")  ){
+          this._nodeFocus(target);
+      }else{
+          if(this.activeNode){
+              this._nodeLostFocus();
+          }
+      }
     }
     //element creation
     _createIcon = (iconSrc, iconTitle) =>{
@@ -249,4 +305,4 @@ class Eadit extends HTMLElement {
 
   }
   
-customElements.define('eadit-input', Eadit); //katsu es escarabajo en kichwa
+customElements.define('eadit-input', Eadit);

@@ -2,92 +2,11 @@
 <html lang="es">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./assets/css/style.css">
-<link rel="stylesheet" href="./assets/external/prism/prism.css">
 <title>EaDit</title>
 
 </head>
 <body>
-
-        <template id="containerTemplate">
-                <div  class="resizableContainer" contenteditable="false"></div>
-        </template>
-
-        <template id="imageTemplate">
-                <img src="" alt="" class="responsiveImage">
-        </template>
-
-        <template id="videoTemplate">
-                <div class="videoKeepRatio">
-                        <iframe class="responsiveVideo" src="" allowfullscreen></iframe>
-                        <div class="responsiveVideoOverlay" class="responsiveVideoOverlay"></div>
-                </div>
-        </template>
-
-        <template id="codeTemplate">
-                        <pre class="codeContainer" contenteditable="false"><code style="pointer-events: none;"></code></pre>
-        </template>
-        
-        <div class="card" id="card">
-                <div class="overlay">
-                        <div class="imageModal" id="imageModal">
-                                <form id="addImage" class="addImage">
-                                        <h3>Add Image</h3>
-                                        <label for="srcImage">Image url</label>
-                                        <input type="text" name="srcImage" id="srcImage" required>
-                                        <label for="altImage">Alt text</label>
-                                        <input type="text" name="altImage" id="altImage">
-                                        <input id="addImageSubmit" type="submit" value="Add Image">
-                                        <input type="reset" value="Cancel" id="addImageCancelBtn">
-                                </form>
-                        </div>       
-                        <div class="videoModal" id="videoModal">
-                                <form id="addVideo" class="addVideo">
-                                        <h3>Add Video</h3>
-                                        <label for="srcVideo">Video url</label>
-                                        <input type="text" name="srcVideo" id="srcVideo" required>
-                                        <input id="addVideoSubmit" type="submit" value="Add Video">
-                                        <input type="reset" value="Cancel" id="addVideoCancelBtn">
-                                </form>
-                        </div>
-                        <div class="codeModal" id="codeModal">
-                                <form id="addCode" class="addCode">
-                                        <h3>Add Code</h3>
-                                        <label for="textCode">Code</label>
-                                        <textarea id="textCode" name="textCode" rows="4" cols="50"></textarea>
-                                        <label for="langCode">Languaje</label>
-                                        <select id="langCode" name="lanCode">
-                                                <option value="language-php">PHP</option>
-                                                <option value="language-javascript">JAVASCRIPT</option>
-                                                <option value="language-css">HTML</option>
-                                                <option value="language-python">PYTHON</option>
-                                                <option value="language-sql">SQL</option>
-                                                <option value="language-java">JAVA</option>
-                                                <option value="language-css">CSS</option>
-                                        </select>
-                                        <input id="addCodeSubmit" type="submit" value="Add Code">
-                                        <input type="reset" value="Cancel" id="addCodeCancelBtn">
-                                </form>
-                        </div>
-                </div>
-                <div class="topnav" id="myTopnav">
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="negrita()"><img src="./assets/icons/bold.svg" class="navBarIcon navBarBtnLastingAction" title="Negrita"></a>
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="italica()"><img src="./assets/icons/italic.svg" class="navBarIcon navBarBtnLastingAction" title="Itálica"></a>
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="subrayado()"><img src="./assets/icons/underline.svg" class="navBarIcon navBarBtnLastingAction" title="Subrayado"></a>
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="imagen()"><img src="./assets/icons/image.svg" class="navBarIcon" title="Imagen"></a>
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="video()"><img src="./assets/icons/video.svg" class="navBarIcon" title="Video"></a>
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="codigo()"><img src="./assets/icons/code.svg" class="navBarIcon" title="Codigo"></a>
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="centrar()"><img src="./assets/icons/center.svg" class="navBarIcon" title="Centrar"></a>
-                        <a class="navBarBtn" href="javascript:void(0);" onclick="justificar()"><img src="./assets/icons/justify.svg" class="navBarIcon" title="Justificar"></a>
-                </div>
-                <div class="textarea" id="textarea" autofocus contenteditable="true"></div>
-        </div>
-
-
         <eadit-input></eadit-input>
-        
-<script src="./assets/js/main.js"></script>
-<script src="./assets/external/prism/prism.js"></script>
-<script src="./assets/components/katsu-editor/eadit.js"></script>
+        <script src="./assets/components/eadit/eadit.js"></script>
 </body>
 </html>
