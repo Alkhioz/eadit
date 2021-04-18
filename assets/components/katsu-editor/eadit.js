@@ -13,6 +13,24 @@ containerTemplate.innerHTML  = `
     <div  class="resizableContainer" contenteditable="false"></div>
   `;
 
+const imageTemplate = document.createElement("template");
+imageTemplate.innerHTML  = `
+  <img src="" alt="" class="responsiveImage">
+  `;
+
+const videoTemplate = document.createElement("template");
+videoTemplate.innerHTML  = `
+    <div class="videoKeepRatio">
+      <iframe class="responsiveVideo" src="" allowfullscreen></iframe>
+      <div class="responsiveVideoOverlay" class="responsiveVideoOverlay"></div>
+    </div>
+    `;
+
+const codeTemplate = document.createElement("template");
+codeTemplate.innerHTML  = `
+  <pre class="codeContainer" contenteditable="false"><code style="pointer-events: none;"></code></pre>
+    `;
+
 const addImageTemplate = document.createElement("template");
 addImageTemplate.innerHTML  = `
   <h3>Add Image</h3>
@@ -98,15 +116,19 @@ class Eadit extends HTMLElement {
 
       card.appendChild(topNavbar);
       card.appendChild(textArea);
+      card.appendChild(imageModal);
+      card.appendChild(codeModal);
+      card.appendChild(videoModal);
 
       shadow.appendChild(loadCss('eadit.css'));
-      shadow.appendChild(imageModal);
-      shadow.appendChild(codeModal);
-      shadow.appendChild(videoModal);
       shadow.appendChild(card);
+
       this._assignCancelBtn("addImageCancelBtn", "imageModal");
       this._assignCancelBtn("addVideoCancelBtn", "videoModal");
       this._assignCancelBtn("addCodeCancelBtn", "codeModal");
+      this._addEventToForm("imageModal", "addImage", this._onImageAdd, true);
+      this._addEventToForm("videoModal", "addVideo", this._onVideoAdd, true);
+      this._addEventToForm("codeModal", "addCode", this._onCodeAdd, false);
     }
 
     //utils
@@ -121,6 +143,49 @@ class Eadit extends HTMLElement {
       cancelBtn.onclick = () => {
         this._closeModal(idModal);
       };
+    }
+    _appendToTextArea = (element, resizable) =>{
+      if(resizable){
+        element = this._createResizableContainer(element);
+      }
+      this.shadowRoot.querySelector("#textarea").appendChild(element);
+    }
+    _addEventToForm = (modalName,formId, element, resizable) => {
+      let formElement = this.shadowRoot.querySelector("#"+formId);
+      formElement.addEventListener('submit', (event)=>{
+          event.preventDefault();
+          this._appendToTextArea(element(formElement), resizable);
+          this._closeModal(modalName);
+          formElement.reset();
+      });
+    }
+    _onImageAdd = (parent) =>{
+      let imageSrc = parent.querySelector("#srcImage").value;
+      let imageAlt = parent.querySelector("#altImage").value;
+      let clone = imageTemplate.content.cloneNode(true);
+      let image = clone.querySelector("img");
+      image.src = imageSrc;
+      image.alt = imageAlt;
+      return clone;
+    }
+    _onVideoAdd = (parent) =>{
+      let videoSrc = parent.querySelector("#srcVideo").value;
+      let clone = videoTemplate.content.cloneNode(true);
+      let video = clone.querySelector("iframe");
+      video.src = videoSrc;
+      return clone;
+    }
+    _onCodeAdd = (parent) =>{
+      let codeText = parent.querySelector("#textCode").value;
+      let codeOption = parent.querySelector("#langCode");
+      let lanCode = codeOption.options[codeOption.selectedIndex].value;
+      let clone = codeTemplate.content.cloneNode(true);
+      let code = clone.querySelector("code");
+      let pre = clone.querySelector("pre");
+      code.innerHTML = codeText;
+      code.classList.add(lanCode);
+      pre.classList.add(lanCode);
+      return clone;
     }
     //element creation
     _createIcon = (iconSrc, iconTitle) =>{
@@ -152,6 +217,12 @@ class Eadit extends HTMLElement {
       form.id = identifier;
       form.appendChild(element);
       return form;
+    }
+    _createResizableContainer = (newChild) =>{
+        let clone = containerTemplate.content.cloneNode(true);
+        let resizableContainer = clone.querySelector(".resizableContainer");
+        resizableContainer.appendChild(newChild);
+        return clone;
     }
     //actions
     _textToBold = () =>{

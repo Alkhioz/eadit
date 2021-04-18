@@ -15,12 +15,19 @@
   pointer-events: auto;
   max-width: 600px;
   display: none;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
 }
 
 .addImage, .addVideo, .addCode{
   display: grid;
   align-items: center;
-  margin: 20px;
+  margin-bottom: 10px;
 }
   
   .resizableContainer{
@@ -80,19 +87,12 @@
 }
 
 
-/*OLD*/
-body, html {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  background-color: rgb(136, 136, 136);
-}
-
 .card {
   width: 100%;
   background-color: #FFF;
   outline: 1px solid;
   padding: 5px;
+  position: relative;
 }
 .textarea {
   outline: 1px solid;
