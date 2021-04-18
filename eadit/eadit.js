@@ -13,6 +13,11 @@ const loadCss = (cssName) => {
   return cssFile;
 }
 
+const loadIcon = (iconName) =>{
+  let path = getCurrentPath();
+  return path+iconName;
+}
+
 /*const loadScript = (jsName) => {
   let path = getCurrentPath();   
   let script  = document.createElement('script'); 
@@ -88,6 +93,20 @@ addCodeTemplate.innerHTML  = `
 
 // Create a class for the element
 class Eadit extends HTMLElement {
+    get value(){
+      let textAreaContent = this.shadowRoot.querySelector("#textarea").innerHTML;
+      textAreaContent = textAreaContent.replaceAll("'","&#39;")
+      textAreaContent = textAreaContent.replaceAll('"','&#34;')
+      return textAreaContent;
+    }
+    set value(node){
+      node = node.replaceAll("'","&#39;")
+      node = node.replaceAll('"','&#34;')
+      let nodeTemplate = document.createElement("template");
+      nodeTemplate.innerHTML = node;
+      let newNode = nodeTemplate.content.cloneNode(true)
+      this.shadowRoot.querySelector("#textarea").appendChild(newNode);
+    }
     constructor() {
       // Always call super first in constructor
       super();
@@ -120,15 +139,15 @@ class Eadit extends HTMLElement {
       topNavbar.classList.add("topnav");
       topNavbar.id = "myTopnav";
 
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/bold.svg", "Bold", this._textToBold));
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/italic.svg", "Italic", this._textToItalic));
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/underline.svg", "Underline", this._textToUnderline));
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/image.svg", "Image", () => {return this._openModal("imageModal")} ));
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/video.svg", "Video", () => {return this._openModal("videoModal")}
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/bold.svg"), "Bold", this._textToBold));
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/italic.svg"), "Italic", this._textToItalic));
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/underline.svg"), "Underline", this._textToUnderline));
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/image.svg"), "Image", () => {return this._openModal("imageModal")} ));
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/video.svg"), "Video", () => {return this._openModal("videoModal")}
       ));
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/code.svg", "Code", () => {return this._openModal("codeModal")} ));
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/center.svg", "Center", this._centerText));
-      topNavbar.appendChild(this._createNavbarBtn("./assets/icons/justify.svg", "Justify", this._justifyText));
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/code.svg"), "Code", () => {return this._openModal("codeModal")} ));
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/center.svg"), "Center", this._centerText));
+      topNavbar.appendChild(this._createNavbarBtn(loadIcon("icons/justify.svg"), "Justify", this._justifyText));
 
       let textArea = document.createElement("div");
       textArea.classList.add("textarea");
@@ -209,6 +228,10 @@ class Eadit extends HTMLElement {
       let clone = codeTemplate.content.cloneNode(true);
       let code = clone.querySelector("code");
       let pre = clone.querySelector("pre");
+      codeText = codeText.replaceAll("<","&lt;");
+      codeText = codeText.replaceAll(">","&gt;");
+      codeText = codeText.replaceAll("'","&#39;")
+      codeText = codeText.replaceAll('"','&#34;')
       code.innerHTML = codeText;
       code.classList.add(lanCode);
       pre.classList.add(lanCode);
